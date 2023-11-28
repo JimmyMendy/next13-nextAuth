@@ -13,9 +13,15 @@ export async function POST(request: Request) {
       INSERT INTO users (email, password)
       VALUES (${email}, ${hashedPassword})
     `;
+    return NextResponse.json(
+      { message: "success, user registered" },
+      { status: 200 }
+    );
   } catch (error) {
     console.log({ error });
+    return NextResponse.json(
+      { message: "An error occured while registering the user" },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json({ message: "success" });
 }

@@ -2,8 +2,10 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import Logout from "./logout";
+import Button from "./Button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +20,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession();
+
+  // if (session) redirect("/dashboard")
+
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <nav>
-          {!!session && <Logout />}
+        <nav className="p-2">
+          <Button label={"Home"} link={"/"}/>
+          {!!session && <Button label={"Dashboard"} link={"/dashboard"}/> }
+          {!!session && <Logout /> }
           {!session && <Link href='/login'>Login</Link>}
         </nav>
         {children}
