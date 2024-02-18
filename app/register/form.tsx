@@ -45,7 +45,7 @@ export default function Form() {
             name='password'
           />
           <button
-            className='bg-green-500 text-white w-fit text-sm cursor-pointer font-bold px-6 py-2'
+            className='bg-green-500 text-white text-sm cursor-pointer font-bold px-6 py-2'
             type='submit'
           >
             Register
